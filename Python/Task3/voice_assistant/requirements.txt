@@ -1,0 +1,9 @@
+# Beginner tier
+SpeechRecognition>=3.10
+pyttsx3>=2.90
+PyAudio>=0.2.13        # microphone access - see README for platform-specific install notes
+
+# Advanced tier
+requests>=2.31         # OpenWeatherMap + Wikipedia API calls
+python-dotenv>=1.0      # optional: load API keys / email creds from a .env file
+nltk>=3.8                # optional: improves NLU via tokenization + lemmatization

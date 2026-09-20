@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}Switchboard{% endblock %}
+{% block body_class %}app{% endblock %}
+
+{% block content %}
+<div class="shell" data-username="{{ username }}">
+
+  <nav class="rail">
+    <div class="rail-head">
+      <span class="rail-mark">Switchboard</span>
+      <span class="rail-user">{{ username }}</span>
+    </div>
+
+    <h2 class="rail-title">Rooms</h2>
+    <ul id="room-list" class="room-list">
+      {% for room in rooms %}
+        <li><button class="room" data-room="{{ room }}">{{ room }}</button></li>
+      {% endfor %}
+    </ul>
+
+    <form id="new-room" class="new-room">
+      <label for="room-name">Start a room</label>
+      <div class="new-room-row">
+        <input id="room-name" name="room-name" type="text" placeholder="design-review" maxlength="32">
+        <button type="submit" class="button button-quiet">Create</button>
+      </div>
+    </form>
+
+    <form method="post" action="{{ url_for('logout') }}" class="rail-foot">
+      <button type="submit" class="linkish">Sign out</button>
+    </form>
+  </nav>
+
+  <main class="room-view">
+    <header class="room-head">
+      <h1 id="room-title">Pick a room</h1>
+      <p id="room-status" class="room-status">Rooms are on the left. Join one to see its history.</p>
+    </header>
+
+    <ol id="messages" class="messages" aria-live="polite">
+      <li class="empty">Nothing here yet. Join a room to start reading.</li>
+    </ol>
+
+    <form id="composer" class="composer">
+      <label class="visually-hidden" for="body">Message</label>
+      <input id="body" name="body" type="text" autocomplete="off" maxlength="2000"
+             placeholder="Write a message. Shortcodes like :fire: turn into emoji." disabled>
+      <button type="submit" class="button" disabled>Send</button>
+    </form>
+  </main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.min.js"></script>
+<script src="{{ url_for('static', filename='chat.js') }}"></script>
+{% endblock %}

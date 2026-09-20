@@ -1,0 +1,13 @@
+{
+  "custom_commands": {
+    "example: open my notes": {
+      "action": "open_url",
+      "value": "https://keep.google.com"
+    },
+    "example: tell me a joke": {
+      "action": "speak",
+      "value": "Why do programmers prefer dark mode? Because light attracts bugs."
+    }
+  },
+  "default_city": "Mumbai"
+}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Create an account · Switchboard{% endblock %}
+{% block body_class %}gate{% endblock %}
+
+{% block content %}
+<main class="gate-grid">
+  <aside class="gate-side">
+    <div class="wordmark">
+      <span class="wordmark-line">Switch</span>
+      <span class="wordmark-line">board</span>
+    </div>
+    <p class="gate-side-note">Rooms, history, and everyone typing at once.</p>
+  </aside>
+
+  <section class="gate-panel">
+    <h1>Create an account</h1>
+    <p class="gate-lede">Your username is what everyone sees in the room.</p>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="notice" role="alert">{{ messages[0] }}</div>
+      {% endif %}
+    {% endwith %}
+
+    <form method="post" class="stack" autocomplete="on">
+      <label for="username">Username</label>
+      <input id="username" name="username" type="text" required autofocus autocomplete="username">
+      <p class="field-hint">3-24 characters. Letters, numbers, dot, underscore or hyphen.</p>
+
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" required autocomplete="new-password">
+      <p class="field-hint">At least 8 characters.</p>
+
+      <button type="submit" class="button">Create account</button>
+    </form>
+
+    <p class="gate-alt">Already registered? <a href="{{ url_for('login') }}">Sign in</a></p>
+  </section>
+</main>
+{% endblock %}

@@ -1,0 +1,8 @@
+# Beginner tier
+# (uses only input(), basic arithmetic - no external packages needed)
+
+# Advanced tier
+matplotlib>=3.8      # trend graph (Figure + FigureCanvasTkAgg)
+
+# tkinter and sqlite3 ship with the standard Python installer on Windows/Mac.
+# On Linux, tkinter is sometimes a separate OS package - see README.md.
